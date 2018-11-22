@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+    <title>Github User Behavior Analysis</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/templatemo_main.css">
+</head>
+
+<body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <div class="logo">
+                <h1>Github User Behavior Analysis</h1>
+            </div>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </div>
+    <div class="template-page-wrapper">
+        <div class="navbar-collapse collapse templatemo-sidebar">
+            <ul class="templatemo-sidebar-menu">
+                <li>
+                    <form class="navbar-form">
+                        <input type="text" class="form-control" id="templatemo_search_box" placeholder="Users Search...">
+                        <span class="btn btn-default" onclick="search_user()">Go</span>
+                    </form>
+                </li>
+                <li><a href="index.html"><i class="fa fa-home"></i>Dashboard1</a></li>
+
+                <li class="active"><a href="data.html"><i class="fa fa-cubes"></i>Data Visualization</a></li>
+                <li><a href="user.html"><i class="fa fa-users"></i>Manage Users</a></li>
+            </ul>
+        </div>
+        <!--/.navbar-collapse -->
+
+        <div class="templatemo-content-wrapper">
+            <div class="templatemo-content">
+                <div class="templatemo-panels">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="alert alert-danger alert-dismissible" role="alert">
+                                        <h1>China
+                                            <span class="pull-right"> No.1</span></h1>
+                                        <p><strong>Users:</strong> 10000</p>
+                                        <p><strong>Respositories:</strong> 10000</p>
+                                        <p><strong>Languages:</strong> Javascript</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="alert alert-info alert-dismissible" role="alert">
+                                        <h1>China
+                                            <span class="pull-right"> No.2</span></h1>
+                                        <p><strong>Users:</strong> 10000</p>
+                                        <p><strong>Respositories:</strong> 10000</p>
+                                        <p><strong>Languages:</strong> Javascript</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="alert alert-success alert-dismissible" role="alert">
+                                        <h1>China
+                                            <span class="pull-right"> No.3</span></h1>
+                                        <p><strong>Users:</strong> 10000</p>
+                                        <p><strong>Respositories:</strong> 10000</p>
+                                        <p><strong>Languages:</strong> Javascript</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="alert alert-warning alert-dismissible" role="alert">
+                                        <h1>China
+                                            <span class="pull-right"> No.4</span></h1>
+                                        <p><strong>Users:</strong> 10000</p>
+                                        <p><strong>Respositories:</strong> 10000</p>
+                                        <p><strong>Languages:</strong> Javascript</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="margin-bottom-30">
+                                <form class="navbar-form">
+                                    <span class="btn btn-default" onclick="go_date()">Check</span>
+                                    <input type="date" class="form-control " id="top_date_search" placeholder="Date Search...">
+                                </form>
+                            </div>
+                            <div class="panel panel-success">
+                                <div class="panel-heading">Top 10 languages in
+                                    <b id="top_time">
+                                        <script>
+                                            document.write(localStorage.getItem("top_time"));
+                                        </script>
+                                    </b>
+                                </div>
+                                <canvas id="templatemo-bar-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="margin-bottom-30">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info">Languages</button>
+                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a onclick="go_language(this.innerHTML)">Javascript</a></li>
+                                        <li><a onclick="go_language(this.innerHTML)">Java</a></li>
+                                        <li><a onclick="go_language(this.innerHTML)">PHP</a></li>
+                                        <li><a onclick="go_language(this.innerHTML)">C++</a></li>
+                                        <li><a onclick="go_language(this.innerHTML)">TypeScript</a></li>
+                                        <li><a onclick="go_language(this.innerHTML)">JupyterNotebook</a></li>
+                                        <li><a onclick="go_language(this.innerHTML)">Python</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel panel-success">
+                                <div class="panel-heading">Churn of
+                                    <b id="language_title">
+                                        <script>
+                                            document.write(localStorage.getItem("language"));
+                                        </script>
+                                    </b>
+                                </div>
+                                <canvas id="templatemo-line-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">Churn of Language</div>
+                                <canvas id="templatemo-lineBar-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                                    class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Are you sure you want to sign out?</h4>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="sign-in.html" class="btn btn-primary">Yes</a>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/Chart.min.js"></script>
+        <script src="js/templatemo_script.js"></script>
+        <script type="text/javascript">
+            // Line chart
+            var randomScalingFactor = function () { return Math.round(Math.random() * 100) };
+            var lineChartData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: 'JAVA',
+                        fillColor: "rgba(255,106,106,0.2)",
+                        strokeColor: "rgba(255,106,106,1)",
+                        pointColor: "rgba(255,106,106,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(255,106,106,1)",
+                        data: [10, 50, randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                    },
+                    {
+                        label: "C++",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        pointColor: "rgba(151,187,205,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                    },
+                    {
+                        label: "Python",
+                        fillColor: "rgba(64,224,208,0.2)",
+                        strokeColor: "rgba(64,224,208,1)",
+                        pointColor: "rgba(64,224,208,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(64,224,208,1)",
+                        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                    }
+                ]
+
+            }
+
+            // Top 10 language
+            var topChartData = {
+                labels: [],
+                datasets: [
+                    {
+                        fillColor: "rgba(255,170,0,0.2)",
+                        strokeColor: "rgba(255,170,0,1)",
+                        pointColor: "rgba(255,170,0,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(255,170,0,1)",
+                        data: []
+                    }
+                ]
+
+            }
+
+            //Change of current language
+            var languageData = {
+                labels: ["Date", "Date", "Date", "Date", "Date"],
+                datasets: [
+                    {
+                        fillColor: "rgba(64,224,208,0.2)",
+                        strokeColor: "rgba(64,224,208,1)",
+                        pointColor: "rgba(64,224,208,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(64,224,208,1)",
+                        data: [1, 1, 1, 1, 1]
+                    }
+                ]
+
+            }
+
+            var localhost = "http://172.31.40.77";
+            var ctx_line; var ctx_lineBar; var ctx_bar
+            window.onload = function () {
+                //language line
+                ctx_line = document.getElementById("templatemo-line-chart").getContext("2d");
+
+                // to do 
+                ctx_lineBar = document.getElementById("templatemo-lineBar-chart").getContext("2d");
+
+                //top 10
+                ctx_bar = document.getElementById("templatemo-bar-chart").getContext("2d");
+                // set language
+                $.get(localhost + "/language.json", function (dataR) {
+                    var data = eval(dataR);
+                    localStorage.setItem("language", data[1].language);
+                    window.myLine = new Chart(ctx_line).Line(languageData, {
+                        responsive: true
+                    });
+                });
+
+                $.get(localhost + "/language.json", function (dataR) {
+
+
+                    window.myLineBar = new Chart(ctx_lineBar).Bar(lineChartData, {
+                        responsive: true
+                    });
+                });
+
+                //set the top 10 
+                $.get(localhost + "/top.json", function (dataR) {
+                    var data = eval(dataR);
+                    localStorage.setItem("top_time", "2018-10-11")
+                    topChartData.labels = [data[0].n1lang, data[0].n2lang, data[0].n3lang, data[0].n4lang, data[0].n5lang, data[0].n6lang, data[0].n7lang, data[0].n8lang, data[0].n9lang, data[0].n10lang];
+                    topChartData.datasets[0].data = [data[0].n1num, data[0].n2num, data[0].n3num, data[0].n4num, data[0].n5num, data[0].n6num, data[0].n7num, data[0].n8num, data[0].n9num, data[0].n10num];
+
+                    window.myBar = new Chart(ctx_bar).Bar(topChartData, {
+                        responsive: true
+                    });
+                });
+
+            };
+
+            $(document).ready(function () {
+
+            });
+
+            $('#myTab a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+            });
+
+            function search_user() {
+                var name = document.getElementById("templatemo_search_box").value;
+                localStorage.setItem("User", name);
+                window.location.href = 'user.html';
+            }
+
+            // change to another language
+            function go_language(language_search) {
+                console.log(language_search)
+                localStorage.setItem("language", language_search);
+                document.getElementById("language_title").innerHTML = language_search;
+
+                $.get("http://52.14.21.138:8080/language/nameandday/" + language_search + "/20181108", function (dataR) {
+                    var data = eval(dataR);
+                    languageData.labels[0] = "20181108";
+                    languageData.datasets[0].data[0] = data.amount;
+                    $.get("http://52.14.21.138:8080/language/nameandday/" + language_search + "/20181109", function (dataR) {
+                        var data = eval(dataR);
+                        languageData.labels[1] = "20181109";
+                        languageData.datasets[0].data[1] = data.amount;
+                        $.get("http://52.14.21.138:8080/language/nameandday/" + language_search + "/20181110", function (dataR) {
+                            var data = eval(dataR);
+                            languageData.labels[2] = "20181110";
+                            languageData.datasets[0].data[2] = data.amount;
+                            $.get("http://52.14.21.138:8080/language/nameandday/" + language_search + "/20181111", function (dataR) {
+                                var data = eval(dataR);
+                                languageData.labels[3] = "20181111";
+                                languageData.datasets[0].data[3] = data.amount;
+                                $.get("http://52.14.21.138:8080/language/nameandday/" + language_search + "/20181112", function (dataR) {
+                                    var data = eval(dataR);
+                                    languageData.labels[4] = "20181112";
+                                    languageData.datasets[0].data[4] = data.amount;
+                                    languageData.labels[5] = "2019";
+                                    languageData.datasets[0].data[5] = null;
+                                    languageData.labels[6] = "2020";
+                                    languageData.datasets[0].data[6] = null;
+                                    window.myLine.destroy();
+                                    window.myLine = new Chart(ctx_line).Line(languageData, {
+                                        responsive: true
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            }
+
+            // change to another date
+            function go_date() {
+                var date_search = document.getElementById("top_date_search").value.replace(/-/g, '');
+                localStorage.setItem("top_time", date_search);
+                document.getElementById("top_time").innerHTML = date_search;
+
+                $.get("http://52.14.21.138:8080/language/date/" + date_search, function (dataR) {
+                    //$.get(localhost + "/top.json", function (dataR) {
+                    var data = eval(dataR);
+                    //console.log(data)
+                    localStorage.setItem("top_time", data.timestamp)
+                    topChartData.labels = [data.n1lang, data.n2lang, data.n3lang, data.n4lang, data.n5lang, data.n6lang, data.n7lang, data.n8lang, data.n9lang, data.n10lang];
+                    topChartData.datasets[0].data = [data.n1num, data.n2num, data.n3num, data.n4num, data.n5num, data.n6num, data.n7num, data.n8num, data.n9num, data.n10num];
+                    //window.myBar.update();
+                    window.myBar.destroy();
+                    var ctx_bar = document.getElementById("templatemo-bar-chart").getContext("2d");
+                    window.myBar = new Chart(ctx_bar).Bar(topChartData, {
+                        responsive: true
+                    });
+                });
+            }
+
+            $('#loading-example-btn').click(function () {
+                var btn = $(this);
+                btn.button('loading');
+            });
+        </script>
+</body>
+
+</html>
